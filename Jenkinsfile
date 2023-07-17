@@ -3,25 +3,21 @@ pipeline{
     
     stages{
     
-        stage('Build'){
-                 when{
-                 BuildingTag()
-                 }
-        
-                steps{
-                    
-                    echo "This Pipeline is working"
-                }
+       stage('Build Master'){
+                       when {
+                          branch 'master'
+                            }
+        steps{
+            echo 'Building master'
             }
-            stage('Dev'){
-                 when{
-                 DevTag()
-                 }
-        
-                steps{
-                    
-                    echo "This Pipeline is working"
-                }
+     }
+
+              stage('Build Dev'){
+                       when {
+                          branch 'Dev'
+                            }
+        steps{
+            echo 'Building Dev'
             }
-        }
+     }
 }
