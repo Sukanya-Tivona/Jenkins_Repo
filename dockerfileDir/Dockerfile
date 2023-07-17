@@ -1,3 +1,2 @@
-from ubuntu
-hello
+from ubuntu:latest
 
