@@ -21,24 +21,36 @@
 //             }
 //      }
 // }
-
-node
-{
+//example 2
+// node
+// {
     
-  if(env.BRANCH_NAME =='master')
-    {
+//   if(env.BRANCH_NAME =='master')
+//     {
     
-       stage('Build Master'){
+//        stage('Build Master'){
         
-            echo 'Building master'
-            }
-    }
-     if(env.BRANCH_NAME =='dev')
-    {
+//             echo 'Building master'
+//             }
+//     }
+//      if(env.BRANCH_NAME =='dev')
+//     {
     
-       stage('Build DEV'){
+//        stage('Build DEV'){
         
-            echo 'Building dev'
-            }
-    }
+//             echo 'Building dev'
+//             }
+//     }
+// }
+node{
+	properties(
+		[
+			overrideIndexTriggers(true)
+		]
+	)
+	
+	stage('Build'){
+			
+                echo 'Hello World'	
+	}
 }
