@@ -1,23 +1,44 @@
-pipeline{
-    agent any
+// pipeline{
+//     agent any
     
-    stages{
+//     stages{
+    
+//        stage('Build Master'){
+//                        when {
+//                           branch 'master'
+//                             }
+//         steps{
+//             echo 'Building master'
+//             }
+//      }
+
+//               stage('Build Dev'){
+//                        when {
+//                           branch 'Dev'
+//                             }
+//         steps{
+//             echo 'Building Dev'
+//             }
+//      }
+// }
+
+node
+{
+    
+  if(env.BRANCH_NAME =='master')
+    {
     
        stage('Build Master'){
-                       when {
-                          branch 'master'
-                            }
-        steps{
+        
             echo 'Building master'
             }
-     }
-
-              stage('Build Dev'){
-                       when {
-                          branch 'Dev'
-                            }
-        steps{
-            echo 'Building Dev'
+    }
+     if(env.BRANCH_NAME =='dev')
+    {
+    
+       stage('Build DEV'){
+        
+            echo 'Building dev'
             }
-     }
+    }
 }
