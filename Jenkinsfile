@@ -58,7 +58,7 @@ node{
 stage("Build"){
 if(env.TAG_NAME !=null)
 {
-println("we r building a tag and tag is $(env.TAG_NAME")
+println("we r building a tag and tag is ${env.TAG_NAME"})
 }
 else{
 println("we r building a branch")
