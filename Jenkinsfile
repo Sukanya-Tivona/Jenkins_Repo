@@ -42,15 +42,30 @@
 //             }
 //     }
 // }
-node{
-	properties(
-		[
-			overrideIndexTriggers(true)
-		]
-	)
+// node{
+// 	properties(
+// 		[
+// 			overrideIndexTriggers(true)
+// 		]
+// 	)
 	
-	stage('Build'){
+// 	stage('Build'){
 			
-                echo 'Hello World'	
-	}
+//                 echo 'Hello World'	
+// 	}
+// }
+node{
+stage("Build"){
+if(env.TAG_NAME !=null)
+{
+println("we r building a tag and tag is $(env.TAG_NAME")
+}
+else{
+println("we r building a branch")
+}
+if(env.TAG_NAME == "releas-1.0")
+{
+println("we are building  release-1.0 tag")
+}
+}
 }
