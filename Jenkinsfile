@@ -1,24 +1,71 @@
-//options>skipdefualtcheckout
-pipeline{
-
-    agent none//since we dont want to checkout the repo at pipeline level
-    
-    stages{
-    
-        stage('Build'){
-                   agent any
-                   options{
-                   skipDefaultCheckout()
-                   }
-        
-                steps{
-                    
-                    echo "This Pipeline is working"
-                }
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
             }
         }
-
+        stage('Build Backend') {
+            steps {
+                sh 'cd backend && npm install'
+            }
+        }
+        stage('Build Frontend') {
+            steps {
+                sh 'cd frontend && npm install && npm run build'
+            }
+        }
+        // stage('Deploy') {
+        //     steps {
+        //         sh './deploy-script.sh'  // Use a script to deploy your app
+        //     }
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//options>skipdefualtcheckout
+// pipeline{
+
+//     agent none//since we dont want to checkout the repo at pipeline level
+    
+//     stages{
+    
+//         stage('Build'){
+//                    agent any
+//                    options{
+//                    skipDefaultCheckout()
+//                    }
+        
+//                 steps{
+                    
+//                     echo "This Pipeline is working"
+//                 }
+//             }
+//         }
+
+// }
 
 
 // pipeline{
