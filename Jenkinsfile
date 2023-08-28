@@ -1,3 +1,26 @@
+//options>skipdefualtcheckout
+pipeline{
+
+    agent none//since we dont want to checkout the repo at pipeline level
+    
+    stages{
+    
+        stage('Build'){
+                   agent any
+                   options{
+                   skipDefaultCheckout()
+                   }
+        
+                steps{
+                    
+                    echo "This Pipeline is working"
+                }
+            }
+        }
+
+}
+
+
 // pipeline{
 //     agent any
     
@@ -54,18 +77,18 @@
 //                 echo 'Hello World'	
 // 	}
 // }
-node{
-stage("Build"){
-if(env.TAG_NAME !=null)
-{
-println("we r building a tag and tag is ${env.TAG_NAME}")
-}
-else{
-println("we r building a branch")
-}
-if(env.TAG_NAME == "releas-1.0")
-{
-println("we are building  release-1.0 tag")
-}
-}
-}
+// node{
+// stage("Build"){
+// if(env.TAG_NAME !=null)
+// {
+// println("we r building a tag and tag is ${env.TAG_NAME}")
+// }
+// else{
+// println("we r building a branch")
+// }
+// if(env.TAG_NAME == "releas-1.0")
+// {
+// println("we are building  release-1.0 tag")
+// }
+// }
+// }
